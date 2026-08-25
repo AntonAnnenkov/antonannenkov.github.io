@@ -20,8 +20,8 @@ html.dark{--bg:#111513;--paper:#191e1b;--text:#eef1ed;--muted:#aeb7b0;--line:#30
 <script>
 const root=document.documentElement,content=document.getElementById('content'),toc=document.getElementById('toc');
 function applyDark(on){root.classList.toggle('dark',on);const b=document.getElementById('darkMode');b.textContent=on?'Ljust läsläge':'Mörkt läsläge';localStorage.setItem('huskop-dark-mode',on?'1':'0')}applyDark(localStorage.getItem('huskop-dark-mode')==='1');document.getElementById('darkMode').onclick=()=>applyDark(!root.classList.contains('dark'));document.getElementById('print').onclick=()=>window.print();
-const SOURCE='https://raw.githubusercontent.com/AntonAnnenkov/antonannenkov.github.io/804cea4080b50e89ed0adb169f4aac3c6cb6a140/index.html';
-fetch(SOURCE,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Kunde inte läsa originalguiden');return r.text()}).then(html=>{const doc=new DOMParser().parseFromString(html,'text/html'),sourceArticle=doc.querySelector('article');if(!sourceArticle)throw new Error('Guiden saknar article');content.innerHTML=sourceArticle.innerHTML;
+const SOURCE='https://api.github.com/repos/AntonAnnenkov/antonannenkov.github.io/contents/index.html?ref=804cea4080b50e89ed0adb169f4aac3c6cb6a140';
+fetch(SOURCE,{cache:'no-store',headers:{Accept:'application/vnd.github+json'}}).then(r=>{if(!r.ok)throw new Error('Kunde inte läsa originalguiden');return r.json()}).then(data=>{const binary=atob(data.content.replace(/\s/g,''));const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));const html=new TextDecoder('utf-8').decode(bytes);const doc=new DOMParser().parseFromString(html,'text/html'),sourceArticle=doc.querySelector('article');if(!sourceArticle)throw new Error('Guiden saknar article');content.innerHTML=sourceArticle.innerHTML;
 content.querySelectorAll('.calculator').forEach(el=>el.remove());
 const delI=[...content.querySelectorAll('h1')].find(h=>h.textContent.trim().startsWith('Del I'));if(delI){const h=document.createElement('h1');h.textContent='Förord';delI.before(h);[
 'Jag tror starkt på att våga ta steget och lita på att små steg åt gången kan ge mycket god effekt i längden.',
