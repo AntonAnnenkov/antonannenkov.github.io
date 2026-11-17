@@ -16,29 +16,30 @@
 <section class="panel analysis" id="analysis">
 <div class="eyebrow">The honest break-even maths</div>
 <h2>Does the Sleeping Bag actually save time?</h2>
-<p class="intro">Count the whole investment: the trip to earn it, the XP paid out by the quests, and the three-minute nap needed to keep the full bonus running.</p>
+<p class="intro">Count everything: the trip to earn it, the XP paid out by the quests, the first three-minute nap, and the short refresh needed to keep the buff rolling.</p>
 <div class="analysis-grid">
-<div class="analysis-card"><small>Quest chain time</small><strong>~1–2 hours</strong><span>Wowhead describes the trip as a substantial cross-Azeroth detour; recent guide estimates put it around one to two hours.</span></div>
-<div class="analysis-card"><small>XP from the six quests</small><strong>10,945 XP</strong><span>This XP pays back part of the time spent questing. The actual time value depends on your level and how quickly you are leveling.</span></div>
-<div class="analysis-card"><small>Full buff</small><strong>+3% XP</strong><span>Three full minutes in the bag: three stacks of +1% XP.</span></div>
+<div class="analysis-card"><small>Quest chain time</small><strong>~1–2 hours</strong><span>A substantial cross-Azeroth trip. Use 90 minutes as a midpoint example, not a guaranteed completion time.</span></div>
+<div class="analysis-card"><small>Quest-chain XP</small><strong>10,945 XP</strong><span>Six quests pay XP back toward the time investment.</span></div>
+<div class="analysis-card"><small>XP bonus</small><strong>+3% XP</strong><span>Three stacks of +1%, affecting both kill XP and quest XP.</span></div>
 </div>
-<h3 class="math-heading">1. Subtract the quest XP from the acquisition cost</h3>
-<p>Quest XP is not wasted time: it is XP you would otherwise have to earn while leveling. Convert it into equivalent leveling time using your actual pace.</p>
-<div class="equation">Net unlock cost = quest-chain time − (10,945 ÷ your XP per hour × 60)</div>
-<p class="muted">For illustration, if the chain takes 90 minutes:</p>
-<table class="break-even-table"><thead><tr><th>Normal leveling pace</th><th>Quest XP is worth</th><th>Net unlock cost</th></tr></thead><tbody>
-<tr><td>20,000 XP/hour</td><td>32.8 minutes</td><td>57.2 minutes</td></tr>
-<tr><td>30,000 XP/hour</td><td>21.9 minutes</td><td>68.1 minutes</td></tr>
+<h3 class="math-heading">1. What did getting the bag really cost?</h3>
+<p>Quest XP offsets some of the time spent on the chain. Convert the 10,945 XP reward into the number of minutes it would take you to earn that XP while leveling normally. Your leveling rate changes with level, so these are examples rather than a fixed answer.</p>
+<div class="equation">Net unlock cost = quest travel time + first 3-minute nap − (10,945 XP ÷ your XP/hour × 60)</div>
+<p class="muted">Assuming a 90-minute quest chain:</p>
+<table class="break-even-table"><thead><tr><th>Your normal pace</th><th>Quest XP value</th><th>Net unlock cost</th><th>Break-even</th></tr></thead><tbody>
+<tr><td>20,000 XP/hour</td><td>32.8 min</td><td>60.2 min</td><td>~78 hours</td></tr>
+<tr><td>30,000 XP/hour</td><td>21.9 min</td><td>71.1 min</td><td>~92 hours</td></tr>
+<tr><td>40,000 XP/hour</td><td>16.4 min</td><td>76.6 min</td><td>~100 hours</td></tr>
 </tbody></table>
-<p class="note">These are examples, not a universal leveling rate. The quest chain itself awards 10,945 XP across six quests; optional quest rewards and the 12-slot bag have not been assigned a time value.</p>
-<h3 class="math-heading">2. Pay the three-minute nap tax</h3>
-<p>Using the one-hour buff duration stated in the Wowhead guide, you need to spend three minutes resting each hour to keep all three stacks for the full leveling hour.</p>
-<div class="equation">57 minutes leveling × 1.03 = 58.71 minutes of normal-XP value</div>
-<div class="equation negative">58.71 − 60 = −1.29 minutes per hour</div>
-<p><strong>That means the full-buff routine does not pay for itself if those three minutes replace active leveling.</strong> The +3% bonus gives you 1.71 minutes' worth of extra XP during the 57 minutes you do play, but the nap costs 3 minutes. Net result: about 1 minute 17 seconds lost per hour, before even counting the quest-chain investment.</p>
-<h3 class="math-heading">3. So when is it worth doing?</h3>
-<p>It makes sense when the three-minute rest overlaps with downtime you would have had anyway: waiting for a group, travel breaks, sorting bags, eating, or a planned AFK. In that case the nap has little or no opportunity cost, and the +3% is genuinely extra XP.</p>
-<div class="caveat"><strong>Buff-duration caveat:</strong> sources disagree. The linked Wowhead guide describes a one-hour buff, while Icy Veins and other current Forever references report two hours. If the in-game buff really lasts two hours, you only need one three-minute rest per two-hour cycle: 117 minutes × 1.03 = 120.51 minutes of normal-XP value, a gain of just 0.51 minutes per two hours. On that interpretation, a 57–68 minute net unlock cost (the examples above) takes roughly 224–267 hours of leveling to repay. Check the actual Well-Rested timer in game; this one detail changes the conclusion.</div>
+<p class="note">Break-even uses the recurring net gain calculated below. It assumes the chain gives 10,945 XP and takes 90 minutes; a 1-hour chain repays sooner, a 2-hour chain takes longer. Other loot (including the 12-slot bag, weapon choice and consumables) is not assigned a time value.</p>
+<h3 class="math-heading">2. The ongoing nap tax is smaller than it looks</h3>
+<p>The key mechanic: the item has a 1-hour cooldown, but the Well-Rested buff lasts 2 hours. You do the full three-minute setup once. When the item is ready again at the one-hour mark, refresh while the existing buff is still active: one minute is enough to refresh it back to the full duration. That means one minute of downtime per hour after the initial setup, not three.</p>
+<div class="equation">59 minutes leveling × 1.03 = 60.77 minutes of normal-XP value</div>
+<div class="equation">60.77 − 60 = +0.77 minutes saved per hour</div>
+<p>So after the first setup, the routine earns back about <strong>46 seconds per hour</strong> of actual leveling. The first hour is slightly negative because the initial three-minute nap leaves 57 minutes to level: 57 × 1.03 = 58.71 minutes of normal-XP value, or 1.29 minutes behind. That's why we include the first nap in the acquisition cost above.</p>
+<h3 class="math-heading">3. Is it worth the detour?</h3>
+<p>At a 90-minute chain and 30,000 XP/hour, the quest rewards buy back about 22 minutes of leveling time. After the first nap, you still have roughly 71 minutes of net investment to recover. At 46 seconds saved per subsequent leveling hour, break-even arrives after about <strong>92 hours of leveling</strong>.</p>
+<div class="caveat"><strong>Practical verdict:</strong> the Sleeping Bag is a long-term investment, not a quick leveling shortcut. It is much better value if you can do the one-minute refresh during natural downtime, or share a party member's bag. If you spend a full three minutes every single hour instead, the math turns negative: 57 × 1.03 = 58.71, meaning you lose about 1 minute 17 seconds per hour before paying back the quest chain.</div>
 </section>
 <section class="section"><div class="section-head"><div class="eyebrow">Horde quest route</div><h2>Follow the trail across Azeroth</h2><p class="muted">The questline sends you between Kalimdor and the Eastern Kingdoms. Horde starts in The Barrens, then visits Westfall; the remaining steps are shared by both factions. Coordinates below are approximate in-game zone coordinates.</p></div>
 <div class="panel">
