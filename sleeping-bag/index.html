@@ -14,29 +14,12 @@
 <main class="wrap">
 <section class="hero"><div class="eyebrow">Horde route · XP planning</div><h1>Get cozy.<br><span>Level smarter.</span></h1><p>A Horde-first walkthrough for earning the Cozy Sleeping Bag in WoW Forever, plus a small calculator to estimate the XP value of keeping its buff active.</p><div class="tag">Patch 1.60.1 · Unofficial community guide</div></section>
 <div class="layout" id="calculator">
-<section class="panel"><div class="eyebrow">Your campfire maths</div><h2>How much XP can it add?</h2><p class="intro">Set your normal XP rate and the length of your session. The calculator estimates the extra XP from the +3% buff, based on the share of your session that it is active.</p>
-<div class="fields">
-<div class="field"><label for="xp">Your normal XP per hour</label><input id="xp" type="number" min="1" step="100" value="30000"></div>
-<div class="field"><label for="hours">Planned play time (hours)</label><input id="hours" type="number" min="0" max="24" step=".25" value="3"></div>
-<div class="field"><label for="stacks">Minutes rested (max 3)</label><input id="stacks" type="number" min="1" max="3" step="1" value="3"></div>
-<div class="field"><label for="uptime">Buff uptime (% of session)</label><input id="uptime" type="number" min="0" max="100" step="5" value="33"></div>
-</div>
-<div class="results">
-<div class="result"><small>XP without buff</small><strong id="base">90,000</strong></div>
-<div class="result"><small>Extra XP estimate</small><strong id="bonus">+297</strong></div>
-<div class="result primary"><small>Equivalent time saved</small><strong id="saved">0.6 min</strong></div>
-<div class="result"><small>Effective XP / hour while active</small><strong id="effective">30,900</strong></div>
-</div>
-<p class="note" id="explain" aria-live="polite"></p>
-</section>
-<aside class="side">
-<div class="fact"><b>+1% / minute</b><span>Gain 1% bonus XP for each full minute lying in the bag.</span></div>
-<div class="fact"><b>+3% max</b><span>Stay in the bag for three minutes to reach the full bonus.</span></div>
-<div class="fact"><b>1 hour</b><span>The Well-Rested XP buff lasts one hour, according to the WoWhead Forever guide.</span></div>
-<div class="fact"><b>Level 14</b><span>Minimum level to start the Cozy Sleeping Bag quest chain.</span></div>
-</aside>
-</div>
-<section class="section"><div class="section-head"><div class="eyebrow">Horde quest route</div><h2>Follow the trail across Azeroth</h2><p class="muted">The questline sends you between Kalimdor and the Eastern Kingdoms. Horde starts in The Barrens, then visits Westfall; the remaining steps are shared by both factions. Coordinates below are approximate in-game zone coordinates.</p></div>
+<section class="panel"><div class="eyebrow">Your campfire maths</div><h2>How much XP can it add?</h2><p class="intro">No XP/hour guesswork. Choose your character level and roughly how full your XP bar is. We estimate the bonus XP if you earn the rest of this level with all three Well-Rested stacks active.</p>
+<div class="fields"><div class="field"><label for="level">Your current level</label><input id="level" type="number" min="14" max="59" step="1" value="30"></div><div class="field"><label for="progress">Current XP bar (%)</label><input id="progress" type="number" min="0" max="99.9" step=".5" value="0"></div></div>
+<div class="results"><div class="result"><small>XP needed to level</small><strong id="remaining">47,400</strong></div><div class="result"><small>Bonus XP at +3%</small><strong id="bonus">+1,422</strong></div><div class="result primary"><small>Extra level progress</small><strong id="barbonus">+3.00%</strong></div><div class="result"><small>XP for this level</small><strong id="levelxp">47,400</strong></div></div>
+<p class="note" id="explain" aria-live="polite"></p></section>
+<aside class="side"><div class="fact"><b>+1% / minute</b><span>Gain 1% bonus XP for each full minute lying in the bag.</span></div><div class="fact"><b>+3% max</b><span>Stay in the bag for three minutes to reach the full bonus.</span></div><div class="fact"><b>1 hour</b><span>The Well-Rested XP buff lasts one hour in WoW Forever.</span></div><div class="fact"><b>Level 14</b><span>Minimum level to start the Cozy Sleeping Bag quest chain.</span></div></aside>
+</div><section class="section"><div class="section-head"><div class="eyebrow">Horde quest route</div><h2>Follow the trail across Azeroth</h2><p class="muted">The questline sends you between Kalimdor and the Eastern Kingdoms. Horde starts in The Barrens, then visits Westfall; the remaining steps are shared by both factions. Coordinates below are approximate in-game zone coordinates.</p></div>
 <div class="panel">
 <div class="route"><div class="zone">01 · Barrens</div><div><h3>Find the first burned-out remains</h3><p>Head south of Camp Taurajo to <span class="coords">/way 46.4, 73.9</span>. Click the Burned-Out Remains in the rubble and accept <em>...and that note you found</em>.</p></div></div>
 <div class="route"><div class="zone">02 · Westfall</div><div><h3>Investigate Alexston Farmstead</h3><p>Travel to the farmstead at <span class="coords">/way 37, 50</span>. Click the burned-out remains in the wrecked cart, turn in the note quest and accept <em>Stepping Stones</em>.</p></div></div>
@@ -62,20 +45,16 @@
 <script>
 const $=id=>document.getElementById(id);
 const number=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(Math.round(n));
+// Classic-era XP required to advance from each level; Forever uses the vanilla leveling curve.
+const xpToLevel={14:12900,15:14400,16:16000,17:17700,18:19400,19:21300,20:23200,21:25200,22:27300,23:29400,24:31700,25:34000,26:36400,27:38900,28:41400,29:44300,30:47400,31:50800,32:54500,33:58600,34:62800,35:67100,36:71600,37:76100,38:80800,39:85700,40:90700,41:95800,42:101000,43:106300,44:111800,45:117500,46:123200,47:129100,48:135100,49:141200,50:147500,51:153900,52:160400,53:167100,54:173900,55:180800,56:187900,57:195000,58:202300,59:209800};
 function calculate(){
- const xp=Math.max(0,Number($('xp').value)||0);
- const hours=Math.max(0,Math.min(24,Number($('hours').value)||0));
- const minutes=Math.max(1,Math.min(3,Math.floor(Number($('stacks').value)||1)));
- const uptime=Math.max(0,Math.min(100,Number($('uptime').value)||0))/100;
- const bonusRate=minutes/100,base=xp*hours,extra=base*bonusRate*uptime;
- const savedMinutes=xp>0?extra/xp*60:0;
- $('base').textContent=number(base);
- $('bonus').textContent='+'+number(extra);
- $('saved').textContent=savedMinutes.toFixed(1)+' min';
- $('effective').textContent=number(xp*(1+bonusRate));
- $('explain').textContent=minutes+' minute'+(minutes===1?'':'s')+' in the bag gives +'+minutes+'% XP. At '+Math.round(uptime*100)+'% buff uptime over '+hours+' hours, the estimate is '+number(extra)+' extra XP, or '+savedMinutes.toFixed(1)+' minutes at your normal XP rate. The buff itself lasts 1 hour; refresh/uptime depends on your play session.';
+ const level=Math.max(14,Math.min(59,Math.floor(Number($('level').value)||14)));
+ const progress=Math.max(0,Math.min(99.9,Number($('progress').value)||0));
+ const required=xpToLevel[level],remaining=required*(1-progress/100),bonus=remaining*.03,barProgress=bonus/required*100;
+ $('level').value=level;$('remaining').textContent=number(remaining);$('bonus').textContent='+'+number(bonus);$('barbonus').textContent='+'+barProgress.toFixed(2)+'%';$('levelxp').textContent=number(required);
+ $('explain').textContent='At level '+level+', this level requires '+number(required)+' XP. With your bar at '+progress.toFixed(1)+'%, you have about '+number(remaining)+' XP left. If all of that base XP is earned while the full +3% buff is active, the bag adds about '+number(bonus)+' XP. This is an XP estimate, not a time estimate.';
 }
-['xp','hours','stacks','uptime'].forEach(id=>$(id).addEventListener('input',calculate));
+['level','progress'].forEach(id=>$(id).addEventListener('input',calculate));
 calculate();
 </script>
 </body></html>
