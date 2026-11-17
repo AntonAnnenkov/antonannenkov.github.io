@@ -10,16 +10,37 @@
 </style>
 </head>
 <body>
-<header class="wrap top"><div class="brand">✦ Azeroth field notes</div><a href="#calculator">Jump to XP calculator ↓</a></header>
+<header class="wrap top"><div class="brand">✦ Azeroth field notes</div><a href="#analysis">Jump to break-even maths ↓</a></header>
 <main class="wrap">
-<section class="hero"><div class="eyebrow">Horde route · XP planning</div><h1>Get cozy.<br><span>Level smarter.</span></h1><p>A Horde-first walkthrough for earning the Cozy Sleeping Bag in WoW Forever, plus a small calculator to estimate the XP value of keeping its buff active.</p><div class="tag">Patch 1.60.1 · Unofficial community guide</div></section>
-<div class="layout" id="calculator">
-<section class="panel"><div class="eyebrow">Your campfire maths</div><h2>How much XP can it add?</h2><p class="intro">No XP/hour guesswork. Choose your character level and roughly how full your XP bar is. We estimate the bonus XP if you earn the rest of this level with all three Well-Rested stacks active.</p>
-<div class="fields"><div class="field"><label for="level">Your current level</label><input id="level" type="number" min="14" max="59" step="1" value="30"></div><div class="field"><label for="progress">Current XP bar (%)</label><input id="progress" type="number" min="0" max="99.9" step=".5" value="0"></div></div>
-<div class="results"><div class="result"><small>XP needed to level</small><strong id="remaining">47,400</strong></div><div class="result"><small>Bonus XP at +3%</small><strong id="bonus">+1,422</strong></div><div class="result primary"><small>Extra level progress</small><strong id="barbonus">+3.00%</strong></div><div class="result"><small>XP for this level</small><strong id="levelxp">47,400</strong></div></div>
-<p class="note" id="explain" aria-live="polite"></p></section>
-<aside class="side"><div class="fact"><b>+1% / minute</b><span>Gain 1% bonus XP for each full minute lying in the bag.</span></div><div class="fact"><b>+3% max</b><span>Stay in the bag for three minutes to reach the full bonus.</span></div><div class="fact"><b>1 hour</b><span>The Well-Rested XP buff lasts one hour in WoW Forever.</span></div><div class="fact"><b>Level 14</b><span>Minimum level to start the Cozy Sleeping Bag quest chain.</span></div></aside>
-</div><section class="section"><div class="section-head"><div class="eyebrow">Horde quest route</div><h2>Follow the trail across Azeroth</h2><p class="muted">The questline sends you between Kalimdor and the Eastern Kingdoms. Horde starts in The Barrens, then visits Westfall; the remaining steps are shared by both factions. Coordinates below are approximate in-game zone coordinates.</p></div>
+<section class="hero"><div class="eyebrow">Horde route · is it worth the detour?</div><h1>Get cozy.<br><span>Level smarter.</span></h1><p>A Horde-first walkthrough for earning the Cozy Sleeping Bag in WoW Forever, plus an honest break-even analysis of the quest time, quest XP, and recurring nap time.</p><div class="tag">Patch 1.60.1 · Unofficial community guide</div></section>
+<section class="panel analysis" id="analysis">
+<div class="eyebrow">The honest break-even maths</div>
+<h2>Does the Sleeping Bag actually save time?</h2>
+<p class="intro">Count the whole investment: the trip to earn it, the XP paid out by the quests, and the three-minute nap needed to keep the full bonus running.</p>
+<div class="analysis-grid">
+<div class="analysis-card"><small>Quest chain time</small><strong>~1–2 hours</strong><span>Wowhead describes the trip as a substantial cross-Azeroth detour; recent guide estimates put it around one to two hours.</span></div>
+<div class="analysis-card"><small>XP from the six quests</small><strong>10,945 XP</strong><span>This XP pays back part of the time spent questing. The actual time value depends on your level and how quickly you are leveling.</span></div>
+<div class="analysis-card"><small>Full buff</small><strong>+3% XP</strong><span>Three full minutes in the bag: three stacks of +1% XP.</span></div>
+</div>
+<h3 class="math-heading">1. Subtract the quest XP from the acquisition cost</h3>
+<p>Quest XP is not wasted time: it is XP you would otherwise have to earn while leveling. Convert it into equivalent leveling time using your actual pace.</p>
+<div class="equation">Net unlock cost = quest-chain time − (10,945 ÷ your XP per hour × 60)</div>
+<p class="muted">For illustration, if the chain takes 90 minutes:</p>
+<table class="break-even-table"><thead><tr><th>Normal leveling pace</th><th>Quest XP is worth</th><th>Net unlock cost</th></tr></thead><tbody>
+<tr><td>20,000 XP/hour</td><td>32.8 minutes</td><td>57.2 minutes</td></tr>
+<tr><td>30,000 XP/hour</td><td>21.9 minutes</td><td>68.1 minutes</td></tr>
+</tbody></table>
+<p class="note">These are examples, not a universal leveling rate. The quest chain itself awards 10,945 XP across six quests; optional quest rewards and the 12-slot bag have not been assigned a time value.</p>
+<h3 class="math-heading">2. Pay the three-minute nap tax</h3>
+<p>Using the one-hour buff duration stated in the Wowhead guide, you need to spend three minutes resting each hour to keep all three stacks for the full leveling hour.</p>
+<div class="equation">57 minutes leveling × 1.03 = 58.71 minutes of normal-XP value</div>
+<div class="equation negative">58.71 − 60 = −1.29 minutes per hour</div>
+<p><strong>That means the full-buff routine does not pay for itself if those three minutes replace active leveling.</strong> The +3% bonus gives you 1.71 minutes' worth of extra XP during the 57 minutes you do play, but the nap costs 3 minutes. Net result: about 1 minute 17 seconds lost per hour, before even counting the quest-chain investment.</p>
+<h3 class="math-heading">3. So when is it worth doing?</h3>
+<p>It makes sense when the three-minute rest overlaps with downtime you would have had anyway: waiting for a group, travel breaks, sorting bags, eating, or a planned AFK. In that case the nap has little or no opportunity cost, and the +3% is genuinely extra XP.</p>
+<div class="caveat"><strong>Buff-duration caveat:</strong> sources disagree. The linked Wowhead guide describes a one-hour buff, while Icy Veins and other current Forever references report two hours. If the in-game buff really lasts two hours, you only need one three-minute rest per two-hour cycle: 117 minutes × 1.03 = 120.51 minutes of normal-XP value, a gain of just 0.51 minutes per two hours. On that interpretation, a 57–68 minute net unlock cost (the examples above) takes roughly 224–267 hours of leveling to repay. Check the actual Well-Rested timer in game; this one detail changes the conclusion.</div>
+</section>
+<section class="section"><div class="section-head"><div class="eyebrow">Horde quest route</div><h2>Follow the trail across Azeroth</h2><p class="muted">The questline sends you between Kalimdor and the Eastern Kingdoms. Horde starts in The Barrens, then visits Westfall; the remaining steps are shared by both factions. Coordinates below are approximate in-game zone coordinates.</p></div>
 <div class="panel">
 <div class="route"><div class="zone">01 · Barrens</div><div><h3>Find the first burned-out remains</h3><p>Head south of Camp Taurajo to <span class="coords">/way 46.4, 73.9</span>. Click the Burned-Out Remains in the rubble and accept <em>...and that note you found</em>.</p></div></div>
 <div class="route"><div class="zone">02 · Westfall</div><div><h3>Investigate Alexston Farmstead</h3><p>Travel to the farmstead at <span class="coords">/way 37, 50</span>. Click the burned-out remains in the wrecked cart, turn in the note quest and accept <em>Stepping Stones</em>.</p></div></div>
@@ -42,19 +63,5 @@
 <div class="sources"><strong>Primary reference</strong><p>This walkthrough is based on Wowhead's Horde steps and coordinates. Travel anecdotes are community reports, not guaranteed shortcuts; routes can vary with level, flight paths, PvP state and server conditions.</p><a href="https://www.wowhead.com/forever/guide/cozy-sleeping-bag-locations-rewards#faction-steps-horde" target="_blank" rel="noopener">Wowhead — Cozy Sleeping Bag (Horde)</a></div>
 <footer class="footer">Unofficial fan-made guide for WoW Forever. World of Warcraft and related marks are property of Blizzard Entertainment.</footer>
 </main>
-<script>
-const $=id=>document.getElementById(id);
-const number=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(Math.round(n));
-// Classic-era XP required to advance from each level; Forever uses the vanilla leveling curve.
-const xpToLevel={14:12900,15:14400,16:16000,17:17700,18:19400,19:21300,20:23200,21:25200,22:27300,23:29400,24:31700,25:34000,26:36400,27:38900,28:41400,29:44300,30:47400,31:50800,32:54500,33:58600,34:62800,35:67100,36:71600,37:76100,38:80800,39:85700,40:90700,41:95800,42:101000,43:106300,44:111800,45:117500,46:123200,47:129100,48:135100,49:141200,50:147500,51:153900,52:160400,53:167100,54:173900,55:180800,56:187900,57:195000,58:202300,59:209800};
-function calculate(){
- const level=Math.max(14,Math.min(59,Math.floor(Number($('level').value)||14)));
- const progress=Math.max(0,Math.min(99.9,Number($('progress').value)||0));
- const required=xpToLevel[level],remaining=required*(1-progress/100),bonus=remaining*.03,barProgress=bonus/required*100;
- $('level').value=level;$('remaining').textContent=number(remaining);$('bonus').textContent='+'+number(bonus);$('barbonus').textContent='+'+barProgress.toFixed(2)+'%';$('levelxp').textContent=number(required);
- $('explain').textContent='At level '+level+', this level requires '+number(required)+' XP. With your bar at '+progress.toFixed(1)+'%, you have about '+number(remaining)+' XP left. If all of that base XP is earned while the full +3% buff is active, the bag adds about '+number(bonus)+' XP. This is an XP estimate, not a time estimate.';
-}
-['level','progress'].forEach(id=>$(id).addEventListener('input',calculate));
-calculate();
-</script>
+<script>\n// Static break-even guide: no calculator inputs or client-side calculation.\n</script>
 </body></html>
